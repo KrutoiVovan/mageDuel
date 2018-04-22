@@ -1,0 +1,1 @@
+C:\soft\fbx-conv\fbx-conv-win32.exe -f %1% %2%

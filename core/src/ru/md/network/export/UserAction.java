@@ -6,7 +6,10 @@ import ru.md.network.messages.MessageType;
  * Created by Vladimir on 30.11.2017.
  */
 public class UserAction extends ExportableObject {
-    private final MessageType messageType = MessageType.GameAction;
+
+    public UserAction() {
+        super(MessageType.GameAction);
+    }
 
     @Override
     public long getMessageSize() {

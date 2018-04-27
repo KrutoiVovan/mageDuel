@@ -1,13 +1,11 @@
 package ru.md;
 
-import ru.md.network.server.SimpleServer;
+import ru.md.network.messagemanager.ServerMessageManager;
 import ru.md.utils.properties.PropertiesManager;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Arrays;
 
@@ -34,13 +32,13 @@ public class LoggerTest {
 //    public static void main(String[] args) {
 //        try {
 //
-//            Thread server = new Thread() {
+//            Thread Server = new Thread() {
 //
 //                @Override
 //                public void run() {
 //                    System.out.println("Сервер запущен");
 //                    try {
-//                        SimpleServer server1 = new SimpleServer();
+//                        ServerMessageManager server1 = new ServerMessageManager();
 //                        while(!server1.acceptClient())
 //                            System.out.println("NOT ACCEPTABLE");
 //                        Thread.sleep(1000);
@@ -55,7 +53,7 @@ public class LoggerTest {
 //                }
 //            };
 //
-//            server.start();
+//            Server.start();
 //
 //            Thread.sleep(1000);
 //
@@ -81,13 +79,13 @@ public class LoggerTest {
 //    public static void main(String[] args) {
 //        try {
 //
-//            Thread server = new Thread() {
+//            Thread Server = new Thread() {
 //
 //                @Override
 //                public void run() {
 //                    System.out.println("Сервер запущен");
 //                    try {
-//                        SimpleServer server1 = new SimpleServer();
+//                        ServerMessageManager server1 = new ServerMessageManager();
 //                        while(!server1.acceptClient())
 //                            System.out.println("NOT ACCEPTABLE");
 //                        Thread.sleep(1000);
@@ -105,7 +103,7 @@ public class LoggerTest {
 //                }
 //            };
 //
-//            server.start();
+//            Server.start();
 //
 //            Thread.sleep(1000);
 //
@@ -142,7 +140,7 @@ public class LoggerTest {
                 public void run() {
                     System.out.println("Сервер запущен");
                     try {
-                        SimpleServer server1 = new SimpleServer();
+                        ServerMessageManager server1 = new ServerMessageManager();
                         while(!server1.acceptClient())
                             System.out.println("NOT ACCEPTABLE");
                         Thread.sleep(1000);

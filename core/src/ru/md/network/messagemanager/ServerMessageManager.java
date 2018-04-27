@@ -1,4 +1,4 @@
-package ru.md.network.server;
+package ru.md.network.messagemanager;
 
 import ru.md.network.messages.MessageConstructor;
 import ru.md.utils.log.LogLevel;
@@ -7,8 +7,6 @@ import ru.md.utils.properties.PropertiesManager;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
@@ -18,19 +16,19 @@ import java.util.List;
 /**
  * Created by Vladimir on 29.11.2017.
  */
-public class SimpleServer {
+public class ServerMessageManager {
 
     private List<Client> clients;
     private ServerSocketChannel registrationChannel;
     private int clientCapacity;
 
 
-    public SimpleServer() throws IOException {
+    public ServerMessageManager() throws IOException {
         this(PropertiesManager.getServerPort(),
                 PropertiesManager.getDefaulCapacity());
     }
 
-    public SimpleServer(int port, int clientCapacity) throws IOException {
+    public ServerMessageManager(int port, int clientCapacity) throws IOException {
         this.clientCapacity = clientCapacity;
         clients = new ArrayList<Client>();
             registrationChannel = ServerSocketChannel.open();
@@ -85,7 +83,7 @@ public class SimpleServer {
         for(Client client: clients)
             client.disconnect();
         registrationChannel.close();
-        Logger.log("Произведена остановка игрового сервера", LogLevel.INFO);
+        Logger.log("Game Server has been shuted down", LogLevel.INFO);
     }
 
     private void disconnectClient(Client client) throws IOException {
@@ -93,6 +91,7 @@ public class SimpleServer {
         broadcastBytes(message);
         client.disconnect();
         clients.remove(client);
+        Logger.log("Game client " + client.toString() + " has been disconnected.", LogLevel.INFO);
     }
 
     private int getFreeSocket() {

@@ -18,6 +18,7 @@ public class StartServerEventListener implements EventListener {
 
     @Override
     public boolean handleEvent(Event event) {
+
         ClientMainFrame.clearScenes();
         MainMenuUIScene scene = new MainMenuUIScene();
         ClientMainFrame.addScene(scene);

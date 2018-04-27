@@ -41,7 +41,7 @@ public class MainMenuBackgroundScene implements Scene{
         cam.far = 300f;
         cam.update();
 
-        ModelManager.loadModel("assets/Hexagon.g3db");
+        ModelManager.loadModel("Hexagon.g3db");
 
         while (!ModelManager.checkLoad())
             System.out.println("loading");

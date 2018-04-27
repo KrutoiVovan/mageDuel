@@ -19,16 +19,12 @@ import ru.md.scene.Scene;
  */
 public class UIScene implements Scene {
 
-    Stage stage;
+    protected  final Stage stage = new Stage();
     private TextButton.TextButtonStyle textButtonStyle;
     private TextField.TextFieldStyle textFieldStyle;
     protected float padding = 5.0f,
                     verticalPadding = 10.0f,
                     horizontalPadding = 10.0f;
-
-    public UIScene() {
-        this.stage = new Stage();
-    }
 
     @Override
     public void render() {
@@ -50,7 +46,7 @@ public class UIScene implements Scene {
         if(textButtonStyle != null)
             return textButtonStyle;
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
-        Texture buttonTexture = new Texture("assets/pic/buttonBackground.png");
+        Texture buttonTexture = new Texture("pic/buttonBackground.png");
         SpriteDrawable drawable = new SpriteDrawable(new Sprite(buttonTexture));
         style.up = drawable;
         style.checked = style.up;
@@ -65,7 +61,7 @@ public class UIScene implements Scene {
     protected TextField.TextFieldStyle createTextFieldStyle(){
         if(textFieldStyle != null)
             return textFieldStyle;
-        Drawable textFieldBackground = new SpriteDrawable(new Sprite(new Texture("assets/pic/textFieldBackground.png")));
+        Drawable textFieldBackground = new SpriteDrawable(new Sprite(new Texture("pic/textFieldBackground.png")));
         TextField.TextFieldStyle style =
                 new TextField.TextFieldStyle(new BitmapFont(), Color.WHITE, null, null, textFieldBackground);
         textFieldStyle = style;

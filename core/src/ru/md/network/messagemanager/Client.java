@@ -1,5 +1,6 @@
-package ru.md.network.server;
+package ru.md.network.messagemanager;
 
+import ru.md.utils.log.Logger;
 import ru.md.utils.properties.PropertiesManager;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ class Client {
     private boolean havePartOfMessage = false;
     private int readedPartSize = 0, partFullSize = 0;
     ByteBuffer partialMessage = ByteBuffer.allocate(PropertiesManager.getMaxBufferSize());
+
 
 
     public Client(SocketChannel channel) {
@@ -98,5 +100,16 @@ class Client {
         }
 
         return message;
+    }
+
+    @Override
+    public String toString() {
+        String clientInfo = "[EMPTY INFO]";
+        try{
+            clientInfo = this.channel.getRemoteAddress().toString();
+        }catch (IOException e){
+            Logger.log(e);
+        }
+        return clientInfo;
     }
 }

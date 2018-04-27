@@ -18,7 +18,11 @@ public class Logger {
         log(e.getStackTrace().toString(), LogLevel.SEVERE);
     }
 
-    public static void log(String message, LogLevel level){
+    public static void log(String message, Throwable e){
+        log(message + "\n" + e.getStackTrace().toString(), LogLevel.SEVERE);
+    }
+
+    public static synchronized void log(String message, LogLevel level){
         if(!checkLevel(level)) return;
         createLogFileIfAbsent();
         writeInFile(message, level);

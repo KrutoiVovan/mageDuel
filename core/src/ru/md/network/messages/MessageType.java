@@ -9,8 +9,8 @@ public enum MessageType {
     SendMessage,
     GameAction,
     GameStart,
-    Unknown,
-    HearthBit;
+    HeartBit,
+    Unknown;
 
     public MessageType getMessageType(int code){
         if(code < MessageType.values().length)
